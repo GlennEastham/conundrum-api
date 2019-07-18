@@ -6,29 +6,24 @@
   "scripts": {
     "start": "sequelize db:migrate && node server.js",
     "dev": "sequelize db:migrate && nodemon server.js ",
-    "test": "jest --coverage --forceExit"
+    "test": "jest",
+    "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
-  "keywords": [
-    "Words",
-    "Scrabble",
-    "Countdown",
-    "Conundrum",
-    "Scramble",
-    "Jumble"
-  ],
   "author": "Glen Eastham",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
+    "body-parser": "1.19.0",
+    "express": "4.17.1",
     "fs": "0.0.1-security",
-    "pg": "^7.11.0",
-    "sequelize": "^5.10.1",
-    "sequelize-cli": "^5.5.0",
-    "swagger-jsdoc": "^3.3.0",
-    "swagger-ui-express": "^4.0.7"
+    "pg": "7.11.0",
+    "sequelize": "5.10.1",
+    "sequelize-cli": "5.5.0",
+    "swagger-jsdoc": "3.3.0",
+    "swagger-ui-express": "4.0.7"
   },
   "devDependencies": {
+    "coveralls": "^3.0.5",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1"
   }
 }

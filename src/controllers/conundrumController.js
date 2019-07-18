@@ -17,13 +17,17 @@ String.prototype.shuffle = function () {
 
 exports.getConundrum = function (req, res) {
     Word.findOne({ order: [sequelize.literal('random()')] }).then((word) => {
-        const randomWord = word;
-        let jumbledWord = randomWord.word.shuffle();
-        let returnWord = {};
-        returnWord.id =  randomWord.uuid
-        returnWord.word = jumbledWord;
-        return res.json({ data: returnWord });
+        return res.json({ data: scrambleWord(word) });
     });
+};
+
+exports.scrambleWord = function (word) {
+    const randomWord = word;
+    let jumbledWord = randomWord.word.shuffle();
+    let returnWord = {};
+    returnWord.id = randomWord.uuid
+    returnWord.word = jumbledWord;
+    return returnWord;
 };
 
 exports.solveConundrum = function (req, res) {

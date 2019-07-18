@@ -1,0 +1,15 @@
+sudo: false
+language: node_js
+node_js: node
+services:
+  - postgresql
+before_script:
+  - psql -c "create user test_user with password 'password';" -U postgres
+  - psql -c 'create database conundrum_test;' -U postgres
+  - psql -c "alter role test_user superuser;" -U postgres
+  - psql -c 'alter database conundrum_test owner to test_user;' -U postgres
+env:
+  - DATABASE_URL=postgresql://test_user:password@localhost/conundrum_test
+script:
+  - npm run lint
+  - npm run test:coveralls
