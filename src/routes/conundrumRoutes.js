@@ -1,4 +1,12 @@
 'use strict';
+
+/**
+ * @swagger
+ * /conundrum:
+ *    get:
+ *      description: This should return all users
+ */
+
 module.exports = function (app) {
     var conundrum = require('../controllers/conundrumController.js');
 
