@@ -4,8 +4,8 @@
   "description": "Simple API to get challenging conundrums!",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js && sequelize db:seed:all",
-    "dev": "nodemon server.js",
+    "start": "sequelize db:migrate all && sequelize db:seed:all && node server.js",
+    "dev": "sequelize db:migrate all && sequelize db:seed:all && nodemon server.js",
     "test": "jest --coverage --forceExit"
   },
   "keywords": [

@@ -3,14 +3,10 @@ require("./src/database/connection");
 var express = require('express');
 var db = require('./models');
 
-
-
 const bodyParser = require('body-parser'),
 app = express();
 port = process.env.PORT || 3000;
-app.listen(port, function() {
-  db.sequelize.sync();
-});
+app.listen(port);
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
