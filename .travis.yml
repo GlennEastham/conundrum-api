@@ -11,5 +11,4 @@ before_script:
 env:
   - DATABASE_URL=postgresql://test_user:password@localhost/conundrum_test
 script:
-  - npm run lint
   - npm run test:coveralls

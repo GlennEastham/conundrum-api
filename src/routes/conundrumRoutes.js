@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
  * @swagger
@@ -8,10 +8,9 @@
  */
 
 module.exports = function (app) {
-    var conundrum = require('../controllers/conundrumController.js');
+  var conundrum = require('../controllers/conundrumController.js')
 
-    app.route('/conundrum')
-        .get(conundrum.getConundrum)
-        .post(conundrum.solveConundrum);
-
-};
+  app.route('/conundrum')
+    .get(conundrum.getConundrum)
+    .post(conundrum.solveConundrum)
+}

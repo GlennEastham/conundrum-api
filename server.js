@@ -1,15 +1,15 @@
-require("./src/database/connection");
+require('./src/database/connection')
 
-var express = require('express');
-var db = require('./models');
+var express = require('express')
+require('./models')
 
-const bodyParser = require('body-parser'),
-app = express();
-port = process.env.PORT || 3000;
-app.listen(port);
+const bodyParser = require('body-parser')
+const app = express()
+const port = process.env.PORT || 3000
+app.listen(port)
 
-const swaggerUi = require('swagger-ui-express');
-const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express')
+const swaggerJSDoc = require('swagger-jsdoc')
 
 const swaggerDefinition = {
   info: {
@@ -25,21 +25,20 @@ const swaggerDefinition = {
 const options = {
   swaggerDefinition,
   apis: ['./routes/*.js']
-};
+}
 
-const swaggerSpec = swaggerJSDoc(options);
+const swaggerSpec = swaggerJSDoc(options)
 app.get('/api-docs.json', function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  res.send(swaggerSpec);
-});
+  res.setHeader('Content-Type', 'application/json')
+  res.send(swaggerSpec)
+})
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
+var routes = require('./src/routes/conundrumRoutes')
+routes(app)
 
-var routes = require('./src/routes/conundrumRoutes');
-routes(app);
-
-console.log('Conundrum RESTful API server started on: ' + port);
+console.log('Conundrum RESTful API server started on: ' + port)
