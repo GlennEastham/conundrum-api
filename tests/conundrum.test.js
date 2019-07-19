@@ -1,5 +1,5 @@
 require('../src/database/connection')
-require('../models')
+require('../src/models')
 const wordController = require('../src/controllers/conundrumController')
 const uuidv4 = require('uuid/v4')
 
@@ -14,4 +14,21 @@ test('Test scrambleWord function', () => {
   testWord.word.split('').forEach(char => {
     expect(scrambledWord.word).toContain(char)
   })
+})
+
+test('Test correct conundrum', () => {
+  const givenWord = 'Conundrum'
+  const correctWord = 'Conundrum'
+  const solveResponse = wordController.solveConundrum(givenWord, correctWord)
+
+  expect(solveResponse.Correct).toBe(true)
+})
+
+test('Test incorrect conundrum', () => {
+  const givenWord = 'rcnmndouu'
+  const correctWord = 'Conundrum'
+  const solveResponse = wordController.solveConundrum(givenWord, correctWord)
+
+  console.log(solveResponse)
+  expect(solveResponse.Correct).toBe(false)
 })

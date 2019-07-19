@@ -10,6 +10,10 @@
     "lint": "eslint '*.js'",
     "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
+  "apidoc": {
+    "title": "Conundrum API",
+    "url": "https://github.com/GlennEastham/conundrum-api"
+  },
   "author": "Glen Eastham",
   "license": "ISC",
   "dependencies": {
@@ -19,8 +23,9 @@
     "pg": "7.11.0",
     "sequelize": "5.10.1",
     "sequelize-cli": "5.5.0",
-    "swagger-jsdoc": "3.3.0",
-    "swagger-ui-express": "4.0.7"
+    "swagger-jsdoc": "^3.3.0",
+    "swagger-ui": "^3.23.1",
+    "swagger-ui-express": "^4.0.7"
   },
   "devDependencies": {
     "coveralls": "^3.0.5",
