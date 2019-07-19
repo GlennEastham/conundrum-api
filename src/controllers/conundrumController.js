@@ -23,25 +23,29 @@ exports.scrambleWord = function (word) {
   returnWord.word = jumbledWord
   return returnWord
 }
-exports.getConundrum = function (req, res) {
+
+exports.getRandomConundrum = function (req, res) {
   Word.findOne({ order: [sequelize.literal('random()')] }).then((word) => {
     return res.json({ data: exports.scrambleWord(word) })
   })
 }
 
-exports.solveConundrum = function (req, res) {
-  console.log(req.body)
+exports.getConundrum = function (req, res) {
   const incomingWord = req.body
   Word.findOne({
     where: {
       uuid: incomingWord.id
     },
     raw: true
-  }).then((wordToSolve) => {
-    if (wordToSolve.word === incomingWord.word) {
-      return res.json({ Answer: 'Correct' })
-    } else {
-      return res.json({ Answer: 'Incorrect' })
-    }
+  }).then((correctWord) => {
+    return res.json(exports.solveConundrum(incomingWord.word, correctWord.word))
   })
+}
+
+exports.solveConundrum = function (incomingWord, correctWord) {
+  if (incomingWord === correctWord) {
+    return { Correct: true }
+  } else {
+    return { Correct: false }
+  }
 }

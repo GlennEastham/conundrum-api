@@ -32,7 +32,7 @@ module.exports = {
       const words = JSON.parse(file)
       const wordsArray = Object.values(words)
       wordsArray.forEach(function (item, index) {
-        item['uuid'] = uuidv4()
+        index === 0 ? item['uuid'] = '68a176b9-7360-48b3-b725-9a54b646c669' : item['uuid'] = uuidv4()
         item['createdAt'] = new Date()
         item['updatedAt'] = new Date()
       })
