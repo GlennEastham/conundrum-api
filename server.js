@@ -39,6 +39,8 @@ const options = {
 }
 
 const swaggerSpec = swaggerJSDoc(options)
+delete swaggerSpec.securityDefinitions
+
 app.get('/api-docs.json', function (req, res) {
   res.setHeader('Content-Type', 'application/json')
   res.send(swaggerSpec)
