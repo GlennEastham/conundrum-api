@@ -26,7 +26,7 @@ exports.scrambleWord = function (word) {
 
 exports.getRandomConundrum = function (req, res) {
   Word.findOne({ order: [sequelize.literal('random()')] }).then((word) => {
-    return res.json({ data: exports.scrambleWord(word) })
+    return res.json(exports.scrambleWord(word))
   })
 }
 
