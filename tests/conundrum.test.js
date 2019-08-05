@@ -29,6 +29,5 @@ test('Test incorrect conundrum', () => {
   const correctWord = 'Conundrum'
   const solveResponse = wordController.solveConundrum(givenWord, correctWord)
 
-  console.log(solveResponse)
   expect(solveResponse.Correct).toBe(false)
 })
