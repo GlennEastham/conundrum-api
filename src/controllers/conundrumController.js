@@ -30,6 +30,12 @@ exports.getRandomConundrum = function (req, res) {
   })
 }
 
+exports.getAllConundrums = function (req, res) {
+  Word.findAll({ order: [sequelize.literal('random()')], attributes: ['uuid', 'word'] }).then((words) => {
+    return res.json(words)
+  })
+}
+
 exports.getConundrum = function (req, res) {
   const incomingWord = req.body
   Word.findOne({
